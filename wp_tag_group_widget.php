@@ -10,9 +10,33 @@
 
 defined('ABSPATH') or die('No script kiddies please!');
 
-add_action('the_content', 'hello_world');
+add_action('widgets_init', 'init_tag_group_widget');
 
-function hello_world($content) {
-  return $content .= '<p>Hello world!</p>';
+function init_tag_group_widget() {
+  register_widget('TagGroupWidget');
 }
+
+
+class TagGroupWidget extends WP_Widget {
+
+  public function __construct() {
+
+    $widget_ops = array(
+      'classname' => 'tag_group_widget',
+      'description' => 'A plugin that displays Tag Groups in a widget'
+    );
+
+    parent::__construct('tag_group_widget', 'Tag Group Widget', $widget_ops);
+  }
+
+  public function widget($args, $inst) {
+  }
+
+  public function form($inst) {
+  }
+
+  public function update($new_inst, $old_inst) {
+  }
+}
+
 ?>
