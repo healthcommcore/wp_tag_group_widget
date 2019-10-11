@@ -7,36 +7,16 @@
    Organization: Dana-Farber Cancer Institute
    Group: Health Communication Core
 */
-
+/*
+*/
 defined('ABSPATH') or die('No script kiddies please!');
 
-add_action('widgets_init', 'init_tag_group_widget');
+add_action('plugins_loaded', 'tag_group_widget_init');
 
-function init_tag_group_widget() {
+function tag_group_widget_init() {
+
+	require_once plugin_dir_path( __FILE__ ) . 'includes/pis-core.php';
   register_widget('TagGroupWidget');
-}
-
-
-class TagGroupWidget extends WP_Widget {
-
-  public function __construct() {
-
-    $widget_ops = array(
-      'classname' => 'tag_group_widget',
-      'description' => 'A plugin that displays Tag Groups in a widget'
-    );
-
-    parent::__construct('tag_group_widget', 'Tag Group Widget', $widget_ops);
-  }
-
-  public function widget($args, $inst) {
-  }
-
-  public function form($inst) {
-  }
-
-  public function update($new_inst, $old_inst) {
-  }
 }
 
 ?>
