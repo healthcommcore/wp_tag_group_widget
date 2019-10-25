@@ -11,11 +11,11 @@
 */
 defined('ABSPATH') or die('No script kiddies please!');
 
-add_action('plugins_loaded', 'tag_group_widget_init');
+add_action('widgets_init', 'tag_group_widget_init');
 
 function tag_group_widget_init() {
 
-	require_once plugin_dir_path( __FILE__ ) . 'includes/pis-core.php';
+  require_once plugin_dir_path( __FILE__ ) . 'includes/TagGroupWidget.php';
   register_widget('TagGroupWidget');
 }
 

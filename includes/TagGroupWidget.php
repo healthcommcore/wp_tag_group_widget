@@ -16,7 +16,8 @@ class TagGroupWidget extends WP_Widget {
     parent::__construct('tag_group_widget', 'Tag Group Widget', $widget_ops);
   }
 
-  public function widget($args, $inst) 
+  public function widget($args, $inst) {
+    echo "<h1>This is a test</h1>";
   }
 
   public function form($inst) {
