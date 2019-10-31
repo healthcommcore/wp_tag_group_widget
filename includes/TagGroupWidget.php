@@ -18,11 +18,8 @@ class TagGroupWidget extends WP_Widget {
 
   public function widget($args, $inst) {
     global $wpdb;
-    //$results = $wpdb->get_results("SELECT $wpdb->;terms.name, $wpdb->;terms.term_group FROM $wpdb->;terms WHERE $wpdb->;terms.term_group NOT = 0");
-    /* GET GROUP LABELS */ $labels = get_option('term_group_labels', array('result'=> 'nada'));
-    /*GET GROUP POSITIONS */ $positions = get_option('term_group_positions', array('result'=> 'nada'));
-    //print_r($labels);
-    // GET ALL TERMS $results = get_terms( array('taxonomy' => 'post_tag'));
+    $labels = get_option('term_group_labels', array('result'=> 'nada'));
+    $positions = get_option('term_group_positions', array('result'=> 'nada'));
     $post = get_the_ID();
     $tag_arr = $this->makeTagArray( get_the_tags($post) );
     $tag_sql = $this->getTagGroupSQLStatement($tag_arr);
@@ -38,16 +35,6 @@ class TagGroupWidget extends WP_Widget {
     }
     $output .= "</ul>";
     echo $output;
-
-    /*
-    echo "<ul>";
-    foreach($tag_arr as $tag) {
-      echo "<li><strong>Tag name: </strong>$tag->name</li>";
-    }
-    echo "</ul>";
-    */
-      
-
   }
 
   public function form($inst) {
